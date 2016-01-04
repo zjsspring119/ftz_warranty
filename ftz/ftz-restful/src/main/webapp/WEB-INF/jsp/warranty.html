@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>仓单查询</title>
+<script>
+var hostname = top.window.location.hostname;
+var port = top.window.location.port;
+var protocol = top.window.location.protocol;
+var pathname = top.window.location.pathname;
+pathname = pathname.substring(0,pathname.lastIndexOf("/"));
+var href = protocol + "//" + hostname;
+if (port != "")
+{
+	href = href + ":" + port + pathname;
+}
+
+var hd = document.getElementsByTagName("head")[0];
+var script1 = document.createElement("script");
+    script1.setAttribute("src", pathname+"/js/custom/mt/warranty.js");
+    script1.setAttribute("type", "text/javascript");
+    script1.setAttribute("id", "antilopejs");
+	hd.appendChild(script1);
+var script2 = document.createElement("script");
+	script2.setAttribute("src", pathname+"/js/core/jquery-1.9.1.min.js");
+	script2.setAttribute("type", "text/javascript");
+	script2.setAttribute("id", "jqueryjs");
+	hd.appendChild(script2);
+var script3 = document.createElement("script");
+	script3.setAttribute("src", pathname+"/js/core/jquery.lazyload.js");
+	script3.setAttribute("type", "text/javascript");
+	script3.setAttribute("id", "lazyjs");
+	hd.appendChild(script3);
+var script4 = document.createElement("script");
+	script4.setAttribute("src", pathname+"/js/core/template.js");
+	script4.setAttribute("type", "text/javascript");
+	script4.setAttribute("id", "artjs");
+	hd.appendChild(script4);
+var script5 = document.createElement("script");
+	script5.setAttribute("src", pathname+"/js/widget/My97DatePicker/WdatePicker.js");
+	script5.setAttribute("type", "text/javascript");
+	script5.setAttribute("id", "my97js");
+	hd.appendChild(script5);
+var script6 = document.createElement("script");
+	script6.setAttribute("src", href+"/js/custom/rc/jsonp.min.js");
+	script6.setAttribute("type", "text/javascript");
+	script6.setAttribute("id", "bsUtiljs");
+	hd.appendChild(script6);
+
+</script>
+</head>
+
+ <body>
+  <form>
+			
+      	 仓单号：<input type="text" id="cdh" name="cdh"/>
+  <br/><br/>
+  offset:<input type="text" id="offset" name="offset" value="0"/>
+  limit：<input type="text" id="limit" name="limit" value="10"/>
+   count：<input type="text" id="count" name="count" value="10"/>
+  			<input type="button" value="查询" onclick="javascript:queryWarranty(href)"/>
+  
+  </form><br/>
+   <div id="result">
+  	<table id="resTable" border="1px" width="1300px" cellspacing="0" cellpadding="0"></table>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,7 @@
+2015-07-29 18:42:39,467 [INFO ] com.bsteel.pacific.imp.main.NSynchroImport  - Start INSERT resource data: pool-1-thread-1 
+2015-07-29 18:42:39,472 [INFO ] com.bsteel.pacific.imp.main.NSynchroImport  - startTime:1438166559472
+2015-07-29 18:42:39,472 [INFO ] com.bsteel.pacific.imp.main.NSynchroImport  - DEFAULT_MAX_THREAD:4
+2015-07-29 18:42:39,524 [INFO ] test.CallbackImpl  - unsuccessful:0
+2015-07-29 18:42:39,524 [INFO ] test.CallbackImpl  - successful:0
+2015-07-29 18:42:39,524 [INFO ] test.CallbackImpl  - batch:
+2015-07-29 18:42:39,525 [INFO ] com.bsteel.pacific.imp.main.NSynchroImport  - End INSERT resource data: pool-1-thread-1

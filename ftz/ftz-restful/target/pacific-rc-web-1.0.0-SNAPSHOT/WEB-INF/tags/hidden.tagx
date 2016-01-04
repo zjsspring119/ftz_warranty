@@ -1,0 +1,13 @@
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:form="http://www.springframework.org/tags/form"
+xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<jsp:output omit-xml-declaration="yes" />
+<jsp:directive.attribute name="id"  required="true" rtexprvalue="true" />
+<jsp:directive.attribute name="name"  required="false" rtexprvalue="true" />
+<jsp:directive.attribute name="path"  required="true" rtexprvalue="true"/>
+<jsp:directive.attribute name="htmlEscape"  required="false" rtexprvalue="true" type="java.lang.Boolean"/>	
+<form:hidden id="${id}" name="${name}" path="${path}" value="${value}"  htmlEscape="${htmlEscape}"
+ cssClass="inputField" cssErrorClass="inputField" cssStyle="${style}" size="${size}" 
+ readonly ="${readonly}"
+/>
+</jsp:root>

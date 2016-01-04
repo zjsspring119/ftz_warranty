@@ -1,0 +1,101 @@
+    .MenuLevel1{
+	position:relative;
+	cursor:hand;
+	width: 165px;
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-top-color: #d9d9d9;
+	border-left-color: #d9d9d9;
+	height: 45px;
+	margin-top: 5px;
+	z-index: 999;
+}
+
+.MenuLevel1 span{
+	position : absolute;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+
+}
+
+/****************** 08.04 .MenuLevel4µ÷Õû***********************************************/
+.MenuLevel4{
+	display:block;
+	background-color:#FFFFFF;
+	height:25px;
+	width: 166px;
+	background-image: url(../images/menu_bg_over.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #d9d9d9;
+	color: #333333;
+	font-size: 14px;
+	line-height: 30px;
+	text-indent: 10px;
+}
+
+.MenuLevel3{
+	position:relative;
+	font-size:12px;
+	color:#333333;
+	background-color:#abc1eb;
+	height:20px;
+	padding-left:18px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #efefef;
+}
+.MenuLevel3 span{
+ position : absolute ;
+ right:2px;
+ top:3px;
+
+}
+
+
+a.MenuLevel4 {
+	text-decoration:none;
+	color: #333333;
+}
+
+a.MenuLevel4:hover {
+	color:#FF9900;
+	text-decoration:none;
+}
+
+a.MenuLevel4:active {
+	color:#FF9900;
+	text-decoration:none;
+	font-weight: bold;
+}
+
+.SubMenuLayer{
+	display:inline;
+	cursor:hand;
+
+}
+
+.SubMenuLayerHidden{
+	display:none;
+	cursor:hand;
+	width: 180px;
+}
+.fill_5 {
+	padding-top: 5px;
+}
+.Menu_yy {
+	background-image: url(../images/menu_bg_over_c.png);
+	background-repeat: repeat-x;
+	height: 10px;
+	width: 180px;
+	background-color: #FFFFFF;
+	line-height: 10px;
+}

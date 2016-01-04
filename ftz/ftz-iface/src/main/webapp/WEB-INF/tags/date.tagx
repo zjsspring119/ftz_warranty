@@ -1,0 +1,57 @@
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:form="http://www.springframework.org/tags/form"
+xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<jsp:output omit-xml-declaration="yes" />
+<jsp:directive.attribute name="id"  required="true" rtexprvalue="true"/>
+<jsp:directive.attribute name="name"  required="true" rtexprvalue="true"/>
+<jsp:directive.attribute name="path"  required="true" rtexprvalue="true"/>
+<jsp:directive.attribute name="label" rtexprvalue="true"/>
+<jsp:directive.attribute name="value"  required="false" rtexprvalue="true"/>
+<jsp:directive.attribute name="htmlEscape"  required="false" rtexprvalue="true" type="java.lang.Boolean"/>
+<jsp:directive.attribute name="required" required="false" rtexprvalue="true" type="java.lang.Boolean"/>
+<jsp:directive.attribute name="readonly" required="false" rtexprvalue="true" type="java.lang.Boolean"/>
+<jsp:directive.attribute name="size" required="false" rtexprvalue="true"/>
+<jsp:directive.attribute name="style" required="false" rtexprvalue="true"/>
+<jsp:directive.attribute name="onchange" required="false" rtexprvalue="true"/>	
+<jsp:directive.attribute name="onblur" required="false" rtexprvalue="true"/>
+<td >
+<label>
+<c:if test= "${required}">
+	<font style="color:red">*</font>			
+</c:if>
+</label>
+<span id="${id}_span" >${label}</span>
+</td>
+<td>    
+<form:input id="${id}" name="${name}" path="${path}" maxlength="${maxlength}" 
+onchange="${onchange}" onblur="${onblur}" htmlEscape="${htmlEscape}"
+ cssClass="txt" cssErrorClass="txt" cssStyle="${style}" size="${size}" 
+ readonly ="${readonly}"
+/><![CDATA[<img id="${id}_img" src="]]><c:url value='${theme.imgRoot}/calendar.gif'/><![CDATA[" />]]>
+<em>
+<form:errors id="${id}_errorMsg" path="${path}" cssClass="error"/>
+</em>
+</td>
+<script type="text/javascript">
+var property_${id}={
+		divId:"dateDiv${id}",
+		needTime:false,
+		format:"yyyy-MM-dd"};
+	$(document).ready(function (){ 	
+		var dateValue = $("#${id}").val();
+		dateValue = dateValue.substring(0,10);		
+		//alert(dateValue);
+		$.createGooCalendar("${id}",property_${id});
+		$("#${id}_img").click(function(){${id}_onClickEvent();})
+		$("#${id}").val(dateValue);
+	}); 
+	
+	function ${id}_onClickEvent(){
+		var obj = document.getElementById("${id}");
+		//var obj = $("#${id}");
+		obj.select();
+		obj.focus();
+		obj.click();
+	} 
+</script>
+</jsp:root>

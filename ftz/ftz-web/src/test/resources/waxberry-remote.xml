@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- remote server -->
+	<bean id="remote.server1" class="com.waxberry.remote.rest.proxy.RouteServer">
+		<property name="url" value="http://127.0.0.1:8080/bbbs-service/waxberry/servicebus"/>
+		<property name="username" value="SPRING"/>
+		<property name="password" value="spring"/>
+		<property name="weights" value="100"/>
+	</bean>
+	<bean id="routeServerShard" class="com.waxberry.remote.rest.proxy.RouteServerShard">
+		<property name="servers">
+			<list>
+				 <ref bean="remote.server1" />  
+			</list>
+		</property>
+	</bean>
+	
+	<!-- session Config -->
+	<bean id="session" class="com.waxberry.context.session.remote.RemoteSession" scope="request">
+		<property name="shardedJedisPool" ref="shardedJedisPool"/>
+	</bean>
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">  
+	    <property name="maxActive"  value="300" />  
+	    <property name="maxIdle" value="100" />  
+	    <property name="maxWait" value="10000" />  
+	    <property name="testOnBorrow"  value="false"/>
+	</bean>  
+	  
+	<bean id="jedis.shardInfo1" class="redis.clients.jedis.JedisShardInfo">  
+	    <constructor-arg index="0" value="127.0.0.1" />  <!-- host -->
+	    <constructor-arg index="1" value="6379" /> <!-- port -->
+	    <constructor-arg index="2" value="10000"/><!-- timeout -->
+	    <property name="password" value="password"/> 
+	</bean>  
+	<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">  
+	    <constructor-arg index="0" ref="jedisPoolConfig" />  
+	    <constructor-arg index="1">  
+	        <list>  
+	            <ref bean="jedis.shardInfo1" />  
+	        </list>  
+	    </constructor-arg>
+	</bean>   
+	
+	<!-- appContext Config -->
+	<bean id="appContext" class="com.waxberry.context.app.remote.RemoteAppContext">
+		<property name="memCachedConfig" ref="memCachedConfig"/>
+	</bean>
+	<bean id="memCachedConfig" class="com.waxberry.context.app.remote.MemCachedConfig">
+		<property name="servers" value="127.0.0.1:11211"/>
+		<property name="weights" value="3"/>
+		<property name="initConn" value="5"/>
+		<property name="minConn" value="5"/>
+		<property name="maxConn" value="250"/>
+		<property name="maxIdle" value="21600000"/>
+		<property name="maintSleep" value="30"/>
+		<property name="nagle" value="true"/>
+		<property name="socketTO" value="3000"/>
+		<property name="socketConnectTO" value="0"/>
+	</bean>
+	
+	<bean id="remoteDataMap" class="com.waxberry.context.datamap.remote.WaxberryRemoteDataMap" scope="prototype"/>
+	
+	<!-- waxberry Context config -->
+	<bean id="waxberryContext" class="com.waxberry.WaxberryContext">
+		<property name="appContext" ref="appContext"/>
+		<lookup-method name="getSession" bean="session"/>
+		<lookup-method name="getDataMap" bean="remoteDataMap"/>
+	</bean>
+	
+		<!-- waxberry log mdc config -->
+	<bean id="waxberryMDC" class="com.waxberry.context.log.mdc.WaxberryMDC">
+		<property name="mdcKeys">
+			<bean class="com.waxberry.context.log.mdc.MDCKeys">
+				<property name="dataMapKeys" value="client-ip"/>
+			</bean>
+		</property>
+	</bean>
+	
+
+
+</beans>

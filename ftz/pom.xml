@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ouyeelf.ftz</groupId>
+	<artifactId>ftz-parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>ftz parent</name>
+	<packaging>pom</packaging>
+    <!-- 实现聚合的核心配置　注意编译次序-->
+	<modules>
+		<module>ftz-model</module>
+		<module>ftz-persist</module>
+		<module>ftz-service</module>
+		<module>ftz-restful</module>
+		<module>ftz-iface</module>
+		<module>ftz-web</module>
+	</modules>
+	<!-- 项目开发者信息　-->
+	<developers>
+		<developer>
+			<id>ftz_zjs</id>
+			<name>zhangjunsheng</name>
+			<email>www.zhangjunsheng1007@163.com</email>
+			<url></url>
+		</developer>
+	</developers>
+	
+	<!--SCM(Source Control Management)标签允许你配置你的代码库，供Maven web站点和其它插件使用。-->
+	<scm>
+		<connection>scm:svn:https://10.60.17.128/svn/baocaitu/trunk</connection>
+		<developerConnection>scm:svn:https://10.60.17.128/svn/baocaitu/trunk</developerConnection>
+		<url>https://10.60.17.128/svn/ftz/trunk</url>
+	</scm>
+	
+	<!-- 用于配置分发管理，配置相应的产品发布信息,主要用于发布，在执行mvn deploy后表示要发布的位置 -->
+	<distributionManagement>
+		<repository>
+			<id>release</id>
+			<name>Nexus Staging Release Repo</name>
+			<url>http://10.60.17.128:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot</id>
+			<name>Nexus Staging Snapshot Repo</name>
+			<url>http://10.60.17.128:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<!-- 变量属性配置-->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.6</jdk.version>
+		<project.version>1.0.0-SNAPSHOT</project.version>
+		<maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
+		<maven.resources.plugin.version>2.4.3</maven.resources.plugin.version>
+		<maven.surefire.plugin.version>2.7.1</maven.surefire.plugin.version>
+		<jetty-maven-plugin.version>8.1.2.v20120308</jetty-maven-plugin.version>
+		<!-- ftz -->
+		<ftz.comm.version>1.0.0-SNAPSHOT</ftz.comm.version>
+		<!-- apache common -->
+		<commons-beanutils.version>1.8.0</commons-beanutils.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<!-- jasypt -->
+		<jasypt.version>1.7</jasypt.version>
+		<!-- spring -->
+		<spring.version>3.2.2.RELEASE</spring.version>
+		<spring.security.version>3.2.0.M1</spring.security.version>
+		<spring.data.commons.version>1.5.1</spring.data.commons.version>
+		<spring.data.mongodb.version>1.2.1.RELEASE</spring.data.mongodb.version>
+		<spring.servlet.version>2.5.0</spring.servlet.version>
+		<!-- junit -->
+		<junit.version>4.11</junit.version>
+		<aspectj.version>1.6.12.RELEASE</aspectj.version>
+		<cglib.version>2.2</cglib.version>
+		<!-- logger -->
+		<slf4j.version>1.6.4</slf4j.version>
+		<log4j.version>1.2.16</log4j.version>
+		<!-- mongo java driver version -->
+		<mongo-java-driver.version>2.9.1</mongo-java-driver.version>
+		<!-- waxberry -->
+		<waxberry.version>1.0.1</waxberry.version>
+		<!-- caches -->
+		<jedis.version>2.1.0</jedis.version>
+		<memcached.version>2.6.6</memcached.version>
+		<!-- hamcrest -->
+		<hamcrest.version>1.3</hamcrest.version>
+		<!-- commons.all -->
+		<commons.fileupload.version>1.2.2</commons.fileupload.version>
+		<commons.io.version>2.0.1</commons.io.version>
+		<commons.discovery.version>20040218.194635</commons.discovery.version>
+		<!-- apache.all -->
+		<apache.poi.version>3.7</apache.poi.version>
+		<apache.taglibs.standard.version>1.1.2</apache.taglibs.standard.version>
+		<apache.axis.version>1.4</apache.axis.version>
+		<!-- servlet.all -->
+		<servlet.api.version>2.5</servlet.api.version>
+		<servlet.jsp.version>2.1.0</servlet.jsp.version>		
+		<servlet.jsp.jstl.version>1.2.0</servlet.jsp.jstl.version>	
+		<!-- jackson -->
+		<jackson.version>1.9.3</jackson.version>
+		<!-- quartz -->
+		<quartz.version>1.5.2-brew</quartz.version>	
+		<quartz.oracle.version>1.5.1</quartz.oracle.version>
+		<!-- lucene -->
+		<lucene.version>3.3.0</lucene.version>
+		<!-- xfire -->
+		<xfire.version>20041222</xfire.version>
+		<!-- wsdl4j -->
+		<wsdl4j.version>1.5.1</wsdl4j.version>
+		<!-- hibernate -->
+		<hibernate.version>4.2.0.Final</hibernate.version>
+		<hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
+		<hibernate.c3p0.version>4.2.0.Final</hibernate.c3p0.version>
+		<!-- database driver -->		
+		<oracle.version>10.2.0.5</oracle.version>
+		<hsql.version>1.8.0.10</hsql.version>
+		<spring.data.jpa.version>1.3.0.RELEASE</spring.data.jpa.version>
+		<!-- querydsl -->
+		<querydsl.version>3.1.0</querydsl.version>
+		
+		<!-- cdn server -->
+		<ouyeelf.cdn.version>1.0.0</ouyeelf.cdn.version>
+		<!-- json -->
+		<json.version>2.2.3</json.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>spring-maven-release</id>
+			<name>Spring Maven Release Repository</name>
+			<url>http://maven.springframework.org/release</url>
+		</repository>
+		<repository>
+			<id>spring-maven-milestone</id>
+			<name>Spring Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+		</repository>
+		<repository>
+			<id>spring-maven-snapshot</id>
+			<name>Spring Maven Snapshot Repository</name>
+			<url>http://maven.springframework.org/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>JBoss Repo</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<name>JBoss Repo</name>
+		</repository>
+		<repository>
+			<id>codehaus-snapshots</id>
+			<url>http://snapshots.repository.codehaus.org</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-maven-release</id>
+			<name>Spring Maven Release Repository</name>
+			<url>http://maven.springframework.org/release</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-maven-milestone</id>
+			<name>Spring Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- base -->
+			<dependency>
+				<groupId>com.ouyeelf.ftz</groupId>
+				<artifactId>ftz-common</artifactId>
+				<version>${ftz.comm.version}</version>
+			</dependency>
+
+		
+			<!-- self -->
+			<dependency>
+				<groupId>com.ouyeelf.ftz</groupId>
+				<artifactId>ftz-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ouyeelf.ftz</groupId>
+				<artifactId>ftz-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ouyeelf.ftz</groupId>
+				<artifactId>ftz-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ouyeelf.ftz</groupId>
+				<artifactId>ftz-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ouyeelf.ftz</groupId>
+				<artifactId>ftz-persist</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- apache common -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons-beanutils.version}</version>
+		</dependency>
+		
+		<!-- aspectj -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.aspectj</groupId>
+		  <artifactId>aspectjrt</artifactId>
+		  <version>${aspectj.version}</version>
+		</dependency>
+		
+		<!-- cglib -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>${cglib.version}</version>
+		</dependency>
+		
+		<!-- jasypt -->
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>${jasypt.version}</version>
+		</dependency>
+		
+		<!-- redis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis.version}</version>
+		</dependency>
+		
+		<!--memcached  -->
+		<dependency>
+		  <groupId>com.danga</groupId>
+		  <artifactId>java-memcached</artifactId>
+		  <version>${memcached.version}</version>
+		</dependency>
+		
+		
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- spring data mongodb -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>${spring.data.mongodb.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-expression</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-beans</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-expression</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-beans</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+		  <groupId>org.springframework.data</groupId>
+		  <artifactId>spring-data-commons-core</artifactId>
+		  <version>${spring.data.commons.core.version}</version>
+		</dependency>
+		<!-- jpa -->
+		<!-- <dependency>
+		  <groupId>javax.persistence</groupId>
+		  <artifactId>persistence-api</artifactId>
+		  <version>1.0</version>
+		</dependency> -->
+		<!-- spring data jpa -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring.data.jpa.version}</version>
+			<exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+	                <groupId>org.slf4j</groupId>
+					<artifactId>jcl-over-slf4j</artifactId>
+				</exclusion>
+                <exclusion>
+                	<artifactId>spring-asm</artifactId>
+                	<groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
+		</dependency>
+		<!-- Database -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsql.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+	      <groupId>com.oracle</groupId>
+	      <artifactId>ojdbc14</artifactId>
+	      <version>${oracle.version}</version>
+	      <scope>compile</scope>
+	    </dependency>	    
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>compile</scope>
+			<exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+					<groupId>commons-collections</groupId>
+					<artifactId>commons-collections</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>asm</artifactId>
+					<groupId>asm</groupId>
+				</exclusion>
+            </exclusions>
+		</dependency>
+		<dependency>
+	      <groupId>org.hibernate</groupId>
+	      <artifactId>hibernate-validator</artifactId>
+	      <version>${hibernate.validator.version}</version>
+	      <scope>compile</scope>
+	      <exclusions>
+	        <exclusion>
+	          <artifactId>slf4j-api</artifactId>
+	          <groupId>org.slf4j</groupId>
+	        </exclusion>
+	      </exclusions>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.hibernate</groupId>
+	      <artifactId>hibernate-c3p0</artifactId>
+	      <version>${hibernate.c3p0.version}</version>
+	      <scope>compile</scope>
+	      <exclusions>
+	        <exclusion>
+	          <artifactId>slf4j-api</artifactId>
+	          <groupId>org.slf4j</groupId>
+	        </exclusion>
+	      </exclusions>
+	    </dependency>
+		
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>${hamcrest.version}</version>
+		</dependency>
+
+		<!-- File Upload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons.fileupload.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+		
+		<!-- Excel -->
+		<dependency>
+		  <groupId>org.apache.poi</groupId>
+		  <artifactId>poi</artifactId>
+		  <version>${apache.poi.version}</version>
+		</dependency>
+		<!-- end -->
+
+		<!-- mongoDB -->
+
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>${mongo-java-driver.version}</version>
+		</dependency>
+
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>com.springsource.javax.servlet</artifactId>
+			<version>${spring.servlet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>com.springsource.javax.servlet.jsp</artifactId>
+			<version>${servlet.jsp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>com.springsource.javax.servlet.jsp.jstl</artifactId>
+			<version>${servlet.jsp.jstl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>com.springsource.org.apache.taglibs.standard</artifactId>
+			<version>${apache.taglibs.standard.version}</version>
+		</dependency>
+
+
+		<!-- waxberry -->
+		<dependency>
+			<groupId>com.waxberry.framework</groupId>
+			<artifactId>waxberry-api</artifactId>
+			<version>${waxberry.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.waxberry.framework</groupId>
+			<artifactId>waxberry-local</artifactId>
+			<version>${waxberry.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.waxberry.framework</groupId>
+			<artifactId>waxberry-log</artifactId>
+			<version>${waxberry.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.waxberry.framework</groupId>
+			<artifactId>waxberry-utils</artifactId>
+			<version>${waxberry.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.waxberry.framework</groupId>
+			<artifactId>waxberry-remote</artifactId>
+			<version>${waxberry.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.waxberry.framework</groupId>
+			<artifactId>waxberry-server</artifactId>
+			<version>${waxberry.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		
+		<!-- Timer -->
+		<dependency>
+		  <groupId>quartz</groupId>
+		  <artifactId>quartz</artifactId>
+		  <version>${quartz.version}</version>
+		</dependency>
+		<dependency>
+		  <groupId>quartz</groupId>
+		  <artifactId>quartz-oracle</artifactId>
+		  <version>${quartz.oracle.version}</version>
+		</dependency>
+		
+		<!-- lucene -->
+		<dependency>  
+            <groupId>org.apache.lucene</groupId>  
+            <artifactId>lucene-core</artifactId>  
+            <version>${lucene.version}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.apache.lucene</groupId>  
+            <artifactId>lucene-analyzers</artifactId>  
+            <version>${lucene.version}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.apache.lucene</groupId>  
+            <artifactId>lucene-highlighter</artifactId>  
+            <version>${lucene.version}</version>  
+        </dependency>        
+    	<dependency>  
+	        <groupId>org.apache.lucene</groupId>  
+	        <artifactId>lucene-memory</artifactId>  
+	        <version>${lucene.version}</version>        
+    	</dependency>  
+    	<dependency>  
+	        <groupId>org.apache.lucene</groupId>  
+	        <artifactId>lucene-smartcn</artifactId>  
+	        <version>${lucene.version}</version>        
+    	</dependency>  
+    	
+    	<dependency>
+		  <groupId>org.apache.axis</groupId>
+		  <artifactId>axis</artifactId>
+		  <version>${apache.axis.version}</version>
+		</dependency>
+    	
+		<dependency>
+		  <groupId>xfire</groupId>
+		  <artifactId>xfire-jaxrpc</artifactId>
+		  <version>${xfire.version}</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>commons-discovery</groupId>
+		  <artifactId>commons-discovery</artifactId>
+		  <version>${commons.discovery.version}</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>wsdl4j</groupId>
+		  <artifactId>wsdl4j</artifactId>
+		  <version>${wsdl4j.version}</version>
+		</dependency>
+		
+		<!-- Querydsl -->
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-mongodb</artifactId>
+			<version>${querydsl.version}</version>
+			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-apt</artifactId>
+			<version>${querydsl.version}</version>
+		</dependency>
+		
+		<!-- ouyeelf cdn -->
+		<dependency>
+			<groupId>com.ouyeelf</groupId>
+			<artifactId>cdn</artifactId>
+			<version>${ouyeelf.cdn.version}</version>
+		</dependency>
+		<!--json解析 -->
+	   <dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>${json.version}</version>
+			<exclusions>
+                <exclusion>
+					<groupId>commons-collections</groupId>
+					<artifactId>commons-collections</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-lang</artifactId>
+					<groupId>commons-lang</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-beanutils</artifactId>
+					<groupId>commons-beanutils</groupId>
+				</exclusion>
+            </exclusions>
+		</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+			</resource>
+		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.plugin.version}</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven.resources.plugin.version}</version>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven.surefire.plugin.version}</version>
+					<configuration>
+						<useFile>false</useFile>
+						<includes>
+							<include>**/*Tests.java</include>
+						</includes>
+						<excludes>
+							<exclude>**/Abstract*.java</exclude>
+						</excludes>
+						<junitArtifactName>junit:junit</junitArtifactName>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>${jetty-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.2.2</version>
+					<!--<configuration>
+						<tagBase>https://10.60.17.128/svn/baocaitu/tags</tagBase>
+						<branchBase>https://10.60.17.128/svn/baocaitu/branches</branchBase>
+					</configuration> -->
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-expression</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-beans</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-context</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.ouyeelf.ftz</groupId>
+			<artifactId>ftz-common</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-context</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+</project>

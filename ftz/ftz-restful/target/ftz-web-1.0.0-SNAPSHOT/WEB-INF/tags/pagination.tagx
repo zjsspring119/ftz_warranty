@@ -1,0 +1,43 @@
+﻿<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:form="http://www.springframework.org/tags/form"
+xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<jsp:output omit-xml-declaration="yes" />
+<jsp:directive.attribute name="id"  required="true" rtexprvalue="true"/>
+<jsp:directive.attribute name="page"  required="false" rtexprvalue="true"/>
+<jsp:directive.attribute name="allPage"  required="false" rtexprvalue="true"/>
+<jsp:directive.attribute name="limit"  required="false" rtexprvalue="true"/>
+<jsp:directive.attribute name="count"  required="false" rtexprvalue="true"/>
+<jsp:directive.attribute name="func" rtexprvalue="true"/>
+<jsp:directive.attribute name="pageId" rtexprvalue="true"/>
+<jsp:directive.attribute name="limitId" rtexprvalue="true"/>
+
+<div align="right">
+
+<input type="hidden" id="count_${id}" name="count_${id}" value="${count}"/>
+第${page+1}页/共${allPage}页 &amp;nbsp;
+
+<c:if test="${page &gt; 0}">
+<a href="JavaScript:nextPage('0','limit_${id}','${pageId}','${limitId}','${func}');">首页</a>&amp;nbsp; 
+<a href="JavaScript:nextPage('${page-1}','limit_${id}','${pageId}','${limitId}','${func}');">上一页</a>&amp;nbsp;
+</c:if>
+<c:if test="${page &lt; allPage-1}">
+<a href="JavaScript:nextPage('${page+1}','limit_${id}','${pageId}','${limitId}','${func}');">下一页</a>&amp;nbsp; 
+
+<c:if test="${allPage &gt; 1 }">
+<a href="JavaScript:nextPage('${allPage-1}','limit_${id}','${pageId}','${limitId}','${func}');">尾页</a>&amp;nbsp; 
+</c:if>
+</c:if>
+<span style="width:100px;overflow:hidden;">
+每页显示<select style="width:50px;" id="limit_${id}" name="limit_${id}" value="${limit}" onchange="changeLimit('0',${allPage},'limit_${id}','${pageId}','${limitId}','${func}');">
+	<![CDATA[<option value="5" ]]><c:if test="${limit eq 5}">selected="selected"</c:if> <![CDATA[>5</option>]]>
+	<![CDATA[<option value="10" ]]><c:if test="${limit eq 10}">selected="selected"</c:if> <![CDATA[>10</option>]]>
+	<![CDATA[<option value="20" ]]><c:if test="${limit eq 20}">selected="selected"</c:if> <![CDATA[>20</option>]]>
+	<![CDATA[<option value="30" ]]><c:if test="${limit eq 30}">selected="selected"</c:if> <![CDATA[>30</option>]]>
+	<![CDATA[<option value="50" ]]><c:if test="${limit eq 50}">selected="selected"</c:if> <![CDATA[>50</option>]]>
+</select>
+</span>&amp;nbsp;
+转到第<input id="jumppage_${id}" name="jumppage_${id}" type="text" size="3" class="inputField"/>页
+<input name="goPage" type="button" class="buttonRegular" value="跳转" onClick="jumpPage('jumppage_${id}',${allPage},'limit_${id}','${pageId}','${limitId}','${func}');" />
+
+</div>
+</jsp:root>

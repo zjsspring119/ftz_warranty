@@ -1,0 +1,28 @@
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:bs="urn:jsptagdir:/WEB-INF/tags"
+	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:output omit-xml-declaration="yes" />
+	<jsp:directive.attribute name="id" required="false" rtexprvalue="true" />
+	<jsp:directive.attribute name="name" required="true" rtexprvalue="true" />
+	<jsp:directive.attribute name="isEdit" required="false" rtexprvalue="true" type="java.lang.Boolean" />
+	<jsp:directive.attribute name="index"  required="false" rtexprvalue="true" type="javax.servlet.jsp.jstl.core.LoopTagStatus"/>
+	<jsp:directive.attribute name="rowData" required="true" rtexprvalue="true" type="com.bsteel.antelope.mt.persist.entity.Codeset" />
+	<jsp:directive.attribute name="style" required="false" rtexprvalue="true" />
+	<jsp:directive.attribute name="rowOnMouseOver" required="false" rtexprvalue="true" />
+	<jsp:directive.attribute name="rowOnMouseOut" required="false" rtexprvalue="true" />
+	<c:set var="contextpath" value="${pageContext.request.contextPath}" />
+	<c:choose>
+		<c:when test="${name eq 'codesetCode' }">
+			<tr id="resource_${id}" >
+			    <td style="width:35px;">
+	     	    <input name="choose_${id}" type="checkbox" value="${rowData.codesetCode }"/>
+	            </td>
+				<td align="center">${rowData.codesetCode}</td>
+				<td align="center">${rowData.codesetName}</td>
+				<td align="center">${rowData.codesetEngName}</td>
+				<td align="center">${rowData.remark}</td>
+			</tr>                                                                         
+		</c:when>
+	</c:choose>
+</jsp:root>

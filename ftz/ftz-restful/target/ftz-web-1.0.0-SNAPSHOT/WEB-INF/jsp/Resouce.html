@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>宝钢国际电子商务服务平台</title>
+<script>
+var hostname = top.window.location.hostname;
+var port = top.window.location.port;
+var protocol = top.window.location.protocol;
+var pathname = top.window.location.pathname;
+pathname = pathname.substring(0,pathname.lastIndexOf("/"));
+var href = protocol + "//" + hostname;
+if (port != "")
+{
+	href = href + ":" + port + pathname;
+}
+
+var hd = document.getElementsByTagName("head")[0];
+var script1 = document.createElement("script");
+    script1.setAttribute("src", pathname+"/js/custom/mt/res.js");
+    script1.setAttribute("type", "text/javascript");
+    script1.setAttribute("id", "antilopejs");
+	hd.appendChild(script1);
+var script2 = document.createElement("script");
+	script2.setAttribute("src", pathname+"/js/core/jquery-1.9.1.min.js");
+	script2.setAttribute("type", "text/javascript");
+	script2.setAttribute("id", "jqueryjs");
+	hd.appendChild(script2);
+var script3 = document.createElement("script");
+	script3.setAttribute("src", pathname+"/js/core/jquery.lazyload.js");
+	script3.setAttribute("type", "text/javascript");
+	script3.setAttribute("id", "lazyjs");
+	hd.appendChild(script3);
+var script4 = document.createElement("script");
+	script4.setAttribute("src", pathname+"/js/core/template.js");
+	script4.setAttribute("type", "text/javascript");
+	script4.setAttribute("id", "artjs");
+	hd.appendChild(script4);
+var script5 = document.createElement("script");
+	script5.setAttribute("src", pathname+"/js/widget/My97DatePicker/WdatePicker.js");
+	script5.setAttribute("type", "text/javascript");
+	script5.setAttribute("id", "my97js");
+	hd.appendChild(script5);
+var script6 = document.createElement("script");
+	script6.setAttribute("src", href+"/js/custom/rc/jsonp.min.js");
+	script6.setAttribute("type", "text/javascript");
+	script6.setAttribute("id", "bsUtiljs");
+	hd.appendChild(script6);
+
+</script>
+</head>
+
+ <body>
+  <form>
+			品种：
+				<input type="checkbox" id="pz" name="pz1" value="彩涂"/>彩涂
+				<input type="checkbox" id="pz" name="pz2" value="品种2"/>品种2
+				<input type="checkbox" id="pz" name="pz3" value="品种3"/>品种3
+				<input type="checkbox" id="pz" name="pz4" value="品种4"/>品种4
+				<input type="checkbox" id="pz" name="pz5" value="品种5"/>品种5
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			大品种：
+				<input type="checkbox" id="bigProductTypeId" name="bigProductTypeId1" value="大品种1"/>大品种1
+				<input type="checkbox" id="bigProductTypeId" name="bigProductTypeId2" value="大品种2"/>大品种2
+				<input type="checkbox" id="bigProductTypeId" name="bigProductTypeId3" value="大品种3"/>大品种3
+				<input type="checkbox" id="bigProductTypeId" name="bigProductTypeId4" value="大品种4"/>大品种4
+				<input type="checkbox" id="bigProductTypeId" name="bigProductTypeId5" value="大品种5"/>大品种5
+			<br/>
+  			产地：
+				<input type="checkbox" id="cd" name="cd1" value="宝钢"/>宝钢
+				<input type="checkbox" id="cd" name="cd2" value="产地2"/>产地2
+				<input type="checkbox" id="cd" name="cd3" value="产地3"/>产地3
+				<input type="checkbox" id="cd" name="cd4" value="产地4"/>产地4
+				<input type="checkbox" id="cd" name="cd5" value="产地5"/>产地5
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			小品种：
+				<input type="checkbox" id="productTypeId" name="productTypeId1" value="小品种1"/>小品种1
+				<input type="checkbox" id="productTypeId" name="productTypeId2" value="小品种2"/>小品种2
+				<input type="checkbox" id="productTypeId" name="productTypeId3" value="小品种3"/>小品种3
+				<input type="checkbox" id="productTypeId" name="productTypeId4" value="小品种4"/>小品种4
+				<input type="checkbox" id="productTypeId" name="productTypeId5" value="小品种5"/>小品种5
+			<br/>
+			特钢专区：
+				<input type="checkbox" id="syrjc" name="syrjc1" value="特钢专区1"/>特钢专区1
+				<input type="checkbox" id="syrjc" name="syrjc2" value="特钢专区2"/>特钢专区2
+				<input type="checkbox" id="syrjc" name="syrjc3" value="特钢专区3"/>特钢专区3
+				<input type="checkbox" id="syrjc" name="syrjc4" value="特钢专区4"/>特钢专区4
+				<input type="checkbox" id="syrjc" name="syrjc5" value="特钢专区5"/>特钢专区5
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			货主名称：
+				<input type="checkbox" id="hz" name="hz1" value="001034"/>001034
+				<input type="checkbox" id="hz" name="hz2" value="000077"/>000077
+			<br/><br/>
+			
+			厚：<input type="text" id="ggxs1Min" name="ggxs1Min" size="6px"/> - <input type="text" id="ggxs1Max" name="ggxs1Max" size="6px"/>
+			宽：<input type="text" id="ggxs2Min" name="ggxs2Min" size="6px"/> - <input type="text" id="ggxs2Max" name="ggxs2Max" size="6px"/>
+  			长：<input type="text" id="ggxs3Min" name="ggxs3Min" size="6px"/> - <input type="text" id="ggxs3Max" name="ggxs3Max" size="6px"/>
+			单价：<input type="text" id="dj3Min" name="dj3Min" size="6px"/> - <input type="text" id="dj3Max" name="dj3Max" size="6px"/>
+			单重：<input type="text" id="sl2Min" name="sl2Min" size="6px"/> - <input type="text" id="sl2Max" name="sl2Max" size="6px"/>
+			是否可议价：<input type="radio" id="flag" name="flag" value="1"/>是<input type="radio" id="flag" name="flag" value="0"/>否
+			<br/><br/>
+			
+  			品名：<input type="text" id="pm" name="pm"/> 牌号：<input type="text" id="cz" name="cz"/>封锁状态：<input type="text" id="fszt" name="fszt"/>
+  			其它：<input type="text" id="qt" name="qt"/>货物状态：<input type="text" id="isimport" name="isimport"/>质量等级：<input type="text" id="wzstr1" name="wzstr1"/>
+			<br/><br/>
+  			
+  			地区：<input type="text" id="dq" name="dq"/>仓库：<input type="text" id="ck" name="ck"/>表面等级：<input type="text" id="wzstr4" name="wzstr4"/>
+			产地：<input type="text" id="producingAreashort" name="producingAreashort"/>排序字段：<input type="text" id="sortName" name="sortName"/>
+			排序方式：<input type="text" id="sortValue" name="sortValue"/>
+			<br/><br/>
+			
+  			新品：<input type="checkbox" id="newflag" name="newflag" value="1"/>
+  			等级：<input type="checkbox" id="gradePic" name="gradePic1" value="精"/>精
+				<input type="checkbox" id="gradePic" name="gradePic2" value="普"/>普
+				<input type="checkbox" id="gradePic" name="gradePic3" value="特"/>特
+  			
+			物资来源：<input type="text" id="wzly" name="wzly"/>
+			专场：<input type="text" id="markert" name="markert"/>
+			
+			是否定向：<input type="text" id="asscustomerIdFlag" name="asscustomerIdFlag"/>
+			asscustomerId：<input type="text" id="asscustomerId" name="asscustomerId"/>
+			<br/><br/>
+			
+                                        涂层结构:
+                  <input type="checkbox" id="coating" value="2/1"/>2/1
+                  <input type="checkbox" id="coating" value="2/1M"/>2/1M
+                  <input type="checkbox" id="coating" value="2/2"/>2/2
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                       锌层:
+                <input type="checkbox"  id="zinc" value="50/50"/>50/50
+                <input type="checkbox"  id="zinc" value="60/60"/>60/60
+                <input type="checkbox" id="zinc" value="70/50"/>70/50
+                <input type="checkbox" id="zinc" value="75/75"/>75/75
+                <input type="checkbox"  id="zinc" value="90/90"/>90/90
+                <input type="checkbox"  id="zinc" value="110/110"/>110/110
+                <input type="checkbox"  id="zinc" value="140/140"/>140/140
+           <br/><br/>              
+                                   涂料类型:
+                <input type="checkbox" id="paint" value="普通聚酯"/>普通聚酯
+                <input type="checkbox" id="paint" value="家电聚酯"/>家电聚酯
+                <input type="checkbox" id="paint" value="高耐候聚酯"/>高耐候聚酯
+                <input type="checkbox" id="paint" value="聚偏氟乙烯"/>聚偏氟乙烯
+               	<input type="checkbox" id="paint" value="高耐候聚酯"/>硅改性聚脂
+                <input type="checkbox" id="paint" value="自洁聚酯"/>自洁聚酯
+                <input type="checkbox" id="paint" value="其它"/>其它
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+                                  用途分类:                
+               <input type="checkbox" id="use" value="普通品种"/>普通品种
+               <input type="checkbox" id="use" value="高强品种"/>高强品种
+               <input type="checkbox"  id="use" value="家电品种"/>家电品种
+            <br/><br/>          
+                                 颜色:
+               <input type="text" id="color" name="color"/>
+		在库:<input type="radio" id="flag1" value="0"/> &nbsp;&nbsp;&nbsp;&nbsp;在制：<input type="radio" id="flag1" value="2"/>
+		牌号：
+			<input type="checkbox" id="cz2" value="TDC51D+Z"/>TDC51D+Z
+            <input type="checkbox" id="cz2" value="KLASTD+W"/>KLASTD+W
+            <input type="checkbox"  id="cz2" value="TDC51D"/>TDC51D
+        合同发票号码：<input type="text" id="htfphm" name="htfphm"/>
+        彩涂基板类型:<input type="text" id="basicType" name="basicType"/>
+        <br/><br/>
+        入库日期：<input type="text" id="rkrq" name="rkrq"/>
+  <br/><br/>
+  offset:<input type="text" id="offset" name="offset" value="0"/>
+  limit：<input type="text" id="limit" name="limit" value="10"/>
+   count：<input type="text" id="count" name="count" value="10"/>
+  			<input type="button" value="查询" onclick="javascript:queryResource(href)"/>
+  
+  </form><br/>
+   <div id="result">
+  	<table id="resTable" border="1px" width="1300px" cellspacing="0" cellpadding="0"></table>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ouyeelf.ftz</groupId>
+		<artifactId>ftz-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>ftz-rsdb</artifactId>
+	<packaging>jar</packaging>
+	<developers>
+		<developer>
+			<id>chengwei</id>
+			<name>chengwei</name>
+			<email>chengwei@bsteel.com</email>
+			<url>http://10.60.17.149/redmine</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:svn:https://10.60.17.128/svn/pacific/trunk/pacific-import-rsdb</connection>
+		<developerConnection>scm:svn:https://10.60.17.128/svn/pacific/trunk/pacific-import-rsdb</developerConnection>
+		<url>https://10.60.17.149/svn/pacific/trunk</url>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>release</id>
+			<name>Nexus Staging Release Repo</name>
+			<url>http://10.60.17.149:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot</id>
+			<name>Nexus Staging Snapshot Repo</name>
+			<url>http://10.60.17.149:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<properties>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.6</jdk.version>
+		<maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
+		<maven.resources.plugin.version>2.4.3</maven.resources.plugin.version>
+		<maven.surefire.plugin.version>2.7.1</maven.surefire.plugin.version>
+		<jetty-maven-plugin.version>8.1.2.v20120308</jetty-maven-plugin.version>
+		<!-- logger -->
+		<slf4j.version>1.6.4</slf4j.version>
+		<log4j.version>1.2.16</log4j.version>
+		<!-- mongo java driver version -->
+		<mongo-java-driver.version>2.11.2</mongo-java-driver.version>
+		<junit.version>4.11</junit.version>
+		<hamcrest.version>1.3</hamcrest.version>
+
+
+
+
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<mongodb.address.list>127.0.0.1:27017</mongodb.address.list>
+				<db.dbname>shdc</db.dbname>
+				<mongodb.user></mongodb.user>
+				<mongodb.password></mongodb.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<!-- <mongodb.list>10.60.17.19:20000</mongodb.list> -->
+				<mongodb.list>10.60.17.19:20000</mongodb.list>
+				<mongodb.dbname>shdc</mongodb.dbname>
+				<mongodb.username>dongchan</mongodb.username>
+				<mongodb.password>12345678</mongodb.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>uat</id>
+			<properties>
+				<mongodb.list>10.60.17.211:30000</mongodb.list>
+				<mongodb.dbname>shdc</mongodb.dbname>
+				<mongodb.username></mongodb.username>
+				<mongodb.password></mongodb.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>production</id>
+			<properties>
+				<!-- <mongodb.list>10.60.3.101:30000,10.60.3.102:30000,10.60.3.103:30000,10.60.3.104:30000,10.60.3.105:30000,10.60.3.106:30000,10.60.3.107:30000,10.60.3.101:30000,10.60.3.108:30000,10.60.3.109:30000,10.60.3.110:30000</mongodb.list> -->
+				<mongodb.list>10.60.17.211:30000</mongodb.list>
+				<mongodb.dbname>shdc</mongodb.dbname>
+				<mongodb.username></mongodb.username>
+				<mongodb.password></mongodb.password>
+			</properties>
+		</profile>
+	</profiles>
+
+	<repositories>
+		<repository>
+			<id>spring-maven-release</id>
+			<name>Spring Maven Release Repository</name>
+			<url>http://maven.springframework.org/release</url>
+		</repository>
+		<repository>
+			<id>spring-maven-milestone</id>
+			<name>Spring Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+		</repository>
+		<repository>
+			<id>spring-maven-snapshot</id>
+			<name>Spring Maven Snapshot Repository</name>
+			<url>http://maven.springframework.org/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>JBoss Repo</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<name>JBoss Repo</name>
+		</repository>
+		<repository>
+			<id>codehaus-snapshots</id>
+			<url>http://snapshots.repository.codehaus.org</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-maven-release</id>
+			<name>Spring Maven Release Repository</name>
+			<url>http://maven.springframework.org/release</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-maven-milestone</id>
+			<name>Spring Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ouyeelf.ftz</groupId>
+			<artifactId>ftz-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ouyeelf.ftz</groupId>
+			<artifactId>ftz-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>${mongo-java-driver.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<!-- junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>${hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- utils -->
+<!-- 		<dependency>
+			<groupId>com.bsteel</groupId>
+			<artifactId>baocors-utils</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
+		
+	</dependencies>
+
+	<build>
+		<!-- <resources> <resource> <directory>${project.basedir}/src/main/resources</directory> 
+			<excludes> <exclude>*.properties</exclude> </excludes> </resource> <resource> 
+			<directory>${project.basedir}/src/main/java</directory> <filtering>false</filtering> 
+			<includes> <include>**/*.js</include> </includes> </resource> </resources> -->
+
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
